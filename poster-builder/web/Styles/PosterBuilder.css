@@ -1,0 +1,68 @@
+﻿
+#lhs { 
+	float: left; width: 30%; 
+	min-height: 1000px;
+	height: 1000px;
+}
+#rhs { 
+	float: right; width: 65%;
+	background-color: #f7f7f7;
+	min-height: 1000px;
+	height: 1000px;
+}
+
+#lhs fieldset {
+	width: 250px;
+}
+
+hr {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.buttons {
+	float: right;
+	margin-top: 1em;
+}
+
+fieldset {
+	margin: 0; 
+	padding: 0 1em 0 1em;
+}
+
+legend {
+	margin: 0; padding: 0;
+}
+
+.noBullets {
+	list-style-type: none;
+	margin: 0; padding: 0;
+}
+		
+.footnote { font-size: x-small; }
+.clear { clear: both; }
+#key {
+	margin-top: 1em;
+	xborder: solid 1px silver;
+	padding: 0.5em;
+}
+.poster {
+	margin: 2em;
+}
+#imgbox {
+	float: right;
+}
+#imgbox p {
+	text-align: center;
+	margin-top: 7em;	
+	font-size: large;
+	font-weight: bold;	
+}
+.SpecialOffer {
+	width: 100%;
+	height: 100px;
+}
+input[type="text"] {
+	width: 100%;
+}
+
