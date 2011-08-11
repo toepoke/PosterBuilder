@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\web.csproj", "{0D793068-1BB1-4110-840C-F44E815ED612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosterBuilder", "PosterBuilder\PosterBuilder.csproj", "{11A7AE70-D743-4A4B-B82F-4A9B0828E010}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosterDesigns", "PosterDesigns\PosterDesigns.csproj", "{2DCAF8FD-94BA-4D3E-A6AD-85132D598048}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D793068-1BB1-4110-840C-F44E815ED612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D793068-1BB1-4110-840C-F44E815ED612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D793068-1BB1-4110-840C-F44E815ED612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D793068-1BB1-4110-840C-F44E815ED612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A7AE70-D743-4A4B-B82F-4A9B0828E010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A7AE70-D743-4A4B-B82F-4A9B0828E010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A7AE70-D743-4A4B-B82F-4A9B0828E010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A7AE70-D743-4A4B-B82F-4A9B0828E010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DCAF8FD-94BA-4D3E-A6AD-85132D598048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DCAF8FD-94BA-4D3E-A6AD-85132D598048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DCAF8FD-94BA-4D3E-A6AD-85132D598048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DCAF8FD-94BA-4D3E-A6AD-85132D598048}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
