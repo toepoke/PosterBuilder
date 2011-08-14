@@ -36,8 +36,11 @@ The above example and two further examples are included with the source code.  S
 
 Feel free to dig straight into the [source code](https://github.com/toepoke/PosterBuilder) or look through the accompanying documentation.
 
-- [[Example walkthrough|Poster-Creation-Walkthrough:-Part-1---Design-Rules]]
-- [[Code overview|Code-overview]]
+<ul>
+<li><a href="https://github.com/toepoke/PosterBuilder/wiki/Code-overview">Code overview</a></li>
+<li><a href="https://github.com/toepoke/PosterBuilder/wiki/Poster-Creation-Walkthrough:-Part-1---Design-Rules">Example walkthrough</a></li>
+</ul>
+
 
 
 
