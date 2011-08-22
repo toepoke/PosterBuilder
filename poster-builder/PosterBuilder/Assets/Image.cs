@@ -254,7 +254,7 @@ namespace PosterBuilder.Assets {
 		/// Returns false otherwise.
 		/// </returns>
 		protected bool UseImagePath() {
-			return !string.IsNullOrWhiteSpace(this._ImagePath);
+			return !string.IsNullOrEmpty(this._ImagePath);
 		
 		} // UseImagePath
 

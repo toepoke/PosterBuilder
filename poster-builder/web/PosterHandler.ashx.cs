@@ -102,7 +102,7 @@ namespace web
 				.Type( mapType )
 			;
 
-			if (!string.IsNullOrWhiteSpace(latLong)) 
+			if (!string.IsNullOrEmpty(latLong)) 
 				// use the Lan/Long in preference to the address (better accuracy)
 				mapPoster.VenueMap.Centre(latLong);
 			else 
@@ -158,7 +158,7 @@ namespace web
 		private string GetParm(HttpContext ctx, string name) {
 			string value = ctx.Request[name] ?? "";
 
-			if (!string.IsNullOrWhiteSpace(value))
+			if (!string.IsNullOrEmpty(value))
 				HttpUtility.UrlDecode(value);
 			
 			return value;

@@ -198,7 +198,7 @@ namespace PosterBuilder.Assets.Mapping
 		/// </summary>
 		/// <param name="mapType">Road, Hybrid or Satellite</param>
 		public Map Type(string mapType) {
-			Enum.TryParse<MapType>(mapType, out this._MapType);
+			this._MapType = (MapType) Enum.Parse(typeof(MapType), mapType, false);
 
 			return this;
 		}
@@ -364,7 +364,7 @@ namespace PosterBuilder.Assets.Mapping
 			foreach (MapMarker marker in 	this._Markers) {
 				sb.AppendFormat("&markers=");
 				sb.AppendFormat("color:{0}", HttpUtility.UrlEncode(marker.Colour + "|"));
-				if (!string.IsNullOrWhiteSpace(marker.Label))
+				if (!string.IsNullOrEmpty(marker.Label))
 					sb.AppendFormat("label:{0}", HttpUtility.UrlEncode(marker.Label + "|"));
 				sb.AppendFormat("size:{0}", marker.Size + "|");
 				if (this._Location.UseLatLong())

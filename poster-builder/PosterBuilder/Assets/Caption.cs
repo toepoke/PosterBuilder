@@ -269,7 +269,7 @@ namespace PosterBuilder.Assets {
 		new public void Validate() {
 			base.Validate();
 
-			if (string.IsNullOrWhiteSpace(this._Text))
+			if (string.IsNullOrEmpty(this._Text))
 				throw new ArgumentException("No Text has been defined.");
 
 		} // Validate

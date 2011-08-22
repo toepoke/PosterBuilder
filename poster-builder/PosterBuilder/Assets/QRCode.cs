@@ -253,7 +253,7 @@ namespace PosterBuilder.Assets {
 		new public void Validate() {
 			base.Validate();
 
-			if (string.IsNullOrWhiteSpace(_Data))
+			if (string.IsNullOrEmpty(_Data))
 				throw new ArgumentException("No Data has been specified to create a Quick Response Code from.");
 
 		} // Validate

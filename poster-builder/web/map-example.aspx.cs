@@ -31,7 +31,7 @@ namespace web
 			poster.ShowDimensions = false;
 			poster.PercentSize = 100;		// fullSize when downloading
 			poster.VenueMap.Type( this.MapType.SelectedValue );
-			if (!string.IsNullOrWhiteSpace(this.LatLong.Text))
+			if (!string.IsNullOrEmpty(this.LatLong.Text))
 				poster.VenueMap.Centre( this.LatLong.Text );
 			else 
 				poster.VenueMap.Centre( this.Address.Text );
