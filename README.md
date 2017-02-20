@@ -6,14 +6,14 @@ Where Posterbuilder comes in is we take a template image with the site branding,
 
 <table border="0" width="60%">
 <tr><td align="middle">
-  <a href="http://dl.dropbox.com/u/1055915/blog/poster-builder/thumbnails/large/map-example-template.jpg">
-    <img src="http://dl.dropbox.com/u/1055915/blog/poster-builder/thumbnails/small/map-example-template.jpg"
+  <a href="./thumbnails/large/map-example-template.jpg">
+    <img src="./thumbnails/small/map-example-template.jpg"
       title="template image" />
   </a>
 </td>
 <td>
-   <a href="http://dl.dropbox.com/u/1055915/blog/poster-builder/thumbnails/large/map-example-rendered.png">
-     <img src="http://dl.dropbox.com/u/1055915/blog/poster-builder/thumbnails/small/map-example-rendered.png"
+   <a href="./thumbnails/large/map-example-rendered.png">
+     <img src="./thumbnails/small/map-example-rendered.png"
       title="personalised poster" />
    </a>
 </td>
