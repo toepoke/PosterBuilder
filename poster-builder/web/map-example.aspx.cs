@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
-
+using System.Configuration;
 
 namespace web
 {
@@ -29,6 +29,7 @@ namespace web
 			poster.SignUpLink = string.Format("http://toepoke.co.uk/{0}.aspx", this.EventID.Text);
 			poster.ShowGuides = false;
 			poster.ShowDimensions = false;
+			poster.ApiKey = PosterRendering.ApiKey.Text;
 			poster.PercentSize = 100;		// fullSize when downloading
 			poster.VenueMap.Type( this.MapType.SelectedValue );
 			if (!string.IsNullOrEmpty(this.LatLong.Text))
@@ -60,6 +61,7 @@ namespace web
 		private string GetPosterURL() {
 			const int PosterID = 2;
 			StringBuilder posterUrl = new StringBuilder();
+			string API_KEY = ConfigurationManager.AppSettings["GoogleStaticMapsApiKey"] as string;
 
 			posterUrl.Append("PosterHandler.ashx?");
 			posterUrl.AppendFormat("posterId={0}", PosterID); 
@@ -69,6 +71,7 @@ namespace web
 			posterUrl.AppendFormat("&lat-long={0}", HttpUtility.UrlEncode(LatLong.Text) );
 			posterUrl.AppendFormat("&address={0}", HttpUtility.UrlEncode(Address.Text) );
 			posterUrl.AppendFormat("&map-type={0}", HttpUtility.UrlEncode(MapType.SelectedValue) );
+			posterUrl.AppendFormat("&key={0}", HttpUtility.UrlEncode(API_KEY));
 			posterUrl.Append("&");
 			posterUrl.Append( PosterRendering.ToQueryString() );
 

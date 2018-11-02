@@ -66,12 +66,14 @@ namespace PosterBuilder.Assets.Mapping
 		/// </summary>
 		/// <param name="copy">Object to make a copy from</param>
 		public Map(Map copy) : base((Image)copy) {
+			_ApiKey = copy._ApiKey;
 			_Location = copy._Location;
 			_MapType = copy._MapType;
 			_ZoomLevel = copy._ZoomLevel;
 			_Width = copy._Width;
 			_Height = copy._Height;
 			_Markers = new List<MapMarker>(copy._Markers);
+			_ApiKey = copy._ApiKey;
 		}
 		
 
@@ -119,6 +121,11 @@ namespace PosterBuilder.Assets.Mapping
 		/// Specifies a set of markers that can be added to the map
 		/// </summary>
 		protected internal List<MapMarker> _Markers = null;
+
+		/// <summary>
+		/// Specifies the Google [static] Maps API key
+		/// </summary>
+		protected internal string _ApiKey = null;
 
 
 		/// <summary>
@@ -292,6 +299,17 @@ namespace PosterBuilder.Assets.Mapping
 
 
 		/// <summary>
+		/// Sets the Google [static] Maps API Key.
+		/// </summary>
+		/// <param name="apiKey">API Key</param>
+		/// <returns>this</returns>
+		public Map ApiKey(string apiKey) {
+			this._ApiKey = apiKey;
+			return this;
+		}
+
+
+		/// <summary>
 		/// Responsible for retrieving the map from the Google servers ready for
 		/// drawing on the canvas
 		/// </summary>
@@ -341,6 +359,8 @@ namespace PosterBuilder.Assets.Mapping
 			mapLink.AppendFormat("&size={0}x{0}", this._Width, this._Height);
 			mapLink.AppendFormat("&maptype={0}",  HttpUtility.UrlEncode(this.GetMapType()) );
 			mapLink.Append("&sensor=false");
+			if (!string.IsNullOrEmpty(this._ApiKey))
+				mapLink.AppendFormat("&key={0}", this._ApiKey);
 
 			// Add a marker to the centre of the map
 			this._Markers.Add(new MapMarker(this._Location));

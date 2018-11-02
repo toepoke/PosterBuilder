@@ -7,6 +7,7 @@ using System.Drawing;
 using PosterBuilder;
 using PosterBuilder.Assets;
 using PosterBuilder.Assets.Mapping;
+using System.Configuration;
 
 namespace PosterDesigns
 {
@@ -24,6 +25,8 @@ namespace PosterDesigns
 		public ExampleMap(string templateFilename)
 			: base(templateFilename)
 		{			
+			string key = ConfigurationManager.AppSettings["GoogleStaticMapsApiKey"] as string;
+
 			this.Frequency = "";
 			this.Venue = "";
 			this.SignUpLink = "";
@@ -32,6 +35,7 @@ namespace PosterDesigns
 				.Zoom(18)
 				.Width(640).Height(640)
 				.Type(Map.MapType.Road)
+				.ApiKey(key)
 			;
 		}
 

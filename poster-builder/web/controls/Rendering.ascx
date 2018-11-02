@@ -23,6 +23,12 @@
 			<label for="<%=ShowGuides.ClientID%>">Show Guides on poster?</label>
 			<asp:CheckBox ID="chkShowGuides" runat="server" Checked="false" />
 		</li>
+		<li>
+			<label for="<%=txtApiKey.ClientID %>">Google [static] Maps API Key</label>
+			<asp:TextBox ID="txtApiKey" runat="server" />
+		</li>
 	</ul>
 </fieldset>
+
+
 

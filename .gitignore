@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/PosterBuilder/v15/.suo
+/.vs/slnx.sqlite
+/poster-builder/web/obj

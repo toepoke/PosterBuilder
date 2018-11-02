@@ -87,6 +87,12 @@ namespace PosterBuilder {
 		public bool ShowDimensions { get; set; }
 
 
+		/// <summary>
+		/// Google Static Maps API key
+		/// </summary>
+		public string ApiKey { get; set; }
+
+
 		/// <summary>For validating our inputs before we try and render a new image.</summary>
 		public void Validate() {
 			if (string.IsNullOrEmpty(this.Filename)) 

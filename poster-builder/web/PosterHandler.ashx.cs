@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +14,6 @@ namespace web
 	/// </summary>
 	public class PosterHandler : IHttpHandler
 	{
-
 		public void ProcessRequest(HttpContext context) {
 			RenderPoster(context);
 		} // ProcessRequest
@@ -57,6 +57,7 @@ namespace web
 			string url = string.Format("http://toepoke.co.uk/{0}.aspx", id);
 			
 			// Set the dynamic bits
+			playFootball.ApiKey = GetApiKey(ctx);
 			playFootball.Frequency = when;
 			playFootball.Venue = where;
 			playFootball.SignUpLink = url;
@@ -71,7 +72,7 @@ namespace web
 			// And send back to the browser
 			// .. we're just going to hard-code PNG for the time being
 			PosterBuilder.ImgFormat.SupportedTypes outFmt = GetImageType(ctx);
-			
+
 			Helpers.SendPosterToBrowser(playFootball, ctx.Response, "football-poster", outFmt);
 
 		} // RenderTextPosterExample
@@ -94,6 +95,7 @@ namespace web
 			string url = string.Format("http://toepoke.co.uk/{0}.aspx", id);
 
 			// Set the dynamic bits
+			mapPoster.ApiKey = GetApiKey(ctx);
 			mapPoster.Frequency = when;
 			mapPoster.Venue = where;
 			mapPoster.SignUpLink = url;
@@ -102,6 +104,7 @@ namespace web
 				.Type( mapType )
 			;
 
+			
 			if (!string.IsNullOrEmpty(latLong)) 
 				// use the Lan/Long in preference to the address (better accuracy)
 				mapPoster.VenueMap.Centre(latLong);
@@ -134,6 +137,7 @@ namespace web
 			PosterDesigns.ExampleVoucher voucher = new PosterDesigns.ExampleVoucher(templateFilename);
 
 			// Set the dynamic bits
+			voucher.ApiKey = GetApiKey(ctx);
 			voucher.SpecialOffer = GetParm(ctx, "special-offer");
 			voucher.OfferFor = GetParm(ctx, "offer-for");
 			voucher.Birthday = DateTime.Parse(GetParm(ctx, "birthday"));
@@ -202,6 +206,21 @@ namespace web
 			return size;
 
 		} // GetSizeParam
+
+
+		/// <summary>
+		/// Convenience method for getting the Google [static] Maps API key (taken from the query string 
+		/// in the request).
+		/// </summary>
+		/// <param name="ctx"></param>
+		/// <returns></returns>
+		private string GetApiKey(HttpContext ctx) {
+			string key = "";
+
+			key = ConfigurationManager.AppSettings["GoogleStaticMapsApiKey"] as string;
+
+			return key;
+		}
 
 
 		public bool IsReusable {
