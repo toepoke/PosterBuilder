@@ -30,12 +30,11 @@ namespace PosterDesigns
 			this.Frequency = "";
 			this.Venue = "";
 			this.SignUpLink = "";
-			this.VenueMap = new Map(base.GDI, "#venueMap")
+			this.VenueMap = new Map(base.GDI, key, "#venueMap")
 				.TopLeft(1715, 850)
 				.Zoom(18)
 				.Width(640).Height(640)
 				.Type(Map.MapType.Road)
-				.ApiKey(key)
 			;
 		}
 

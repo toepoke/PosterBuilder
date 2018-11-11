@@ -57,7 +57,6 @@ namespace web
 			string url = string.Format("http://toepoke.co.uk/{0}.aspx", id);
 			
 			// Set the dynamic bits
-			playFootball.ApiKey = GetApiKey(ctx);
 			playFootball.Frequency = when;
 			playFootball.Venue = where;
 			playFootball.SignUpLink = url;
@@ -95,7 +94,6 @@ namespace web
 			string url = string.Format("http://toepoke.co.uk/{0}.aspx", id);
 
 			// Set the dynamic bits
-			mapPoster.ApiKey = GetApiKey(ctx);
 			mapPoster.Frequency = when;
 			mapPoster.Venue = where;
 			mapPoster.SignUpLink = url;
@@ -103,7 +101,6 @@ namespace web
 			mapPoster.VenueMap
 				.Type( mapType )
 			;
-
 			
 			if (!string.IsNullOrEmpty(latLong)) 
 				// use the Lan/Long in preference to the address (better accuracy)
@@ -137,7 +134,6 @@ namespace web
 			PosterDesigns.ExampleVoucher voucher = new PosterDesigns.ExampleVoucher(templateFilename);
 
 			// Set the dynamic bits
-			voucher.ApiKey = GetApiKey(ctx);
 			voucher.SpecialOffer = GetParm(ctx, "special-offer");
 			voucher.OfferFor = GetParm(ctx, "offer-for");
 			voucher.Birthday = DateTime.Parse(GetParm(ctx, "birthday"));
@@ -206,21 +202,6 @@ namespace web
 			return size;
 
 		} // GetSizeParam
-
-
-		/// <summary>
-		/// Convenience method for getting the Google [static] Maps API key (taken from the query string 
-		/// in the request).
-		/// </summary>
-		/// <param name="ctx"></param>
-		/// <returns></returns>
-		private string GetApiKey(HttpContext ctx) {
-			string key = "";
-
-			key = ConfigurationManager.AppSettings["GoogleStaticMapsApiKey"] as string;
-
-			return key;
-		}
 
 
 		public bool IsReusable {

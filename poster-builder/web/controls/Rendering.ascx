@@ -23,9 +23,9 @@
 			<label for="<%=ShowGuides.ClientID%>">Show Guides on poster?</label>
 			<asp:CheckBox ID="chkShowGuides" runat="server" Checked="false" />
 		</li>
+		<%if (ConfigurationManager.AppSettings["GoogleStaticMapsApiKey"] as string == "[ADD-YOUR-API-KEY]") %>
 		<li>
-			<label for="<%=txtApiKey.ClientID %>">Google [static] Maps API Key</label>
-			<asp:TextBox ID="txtApiKey" runat="server" />
+			<strong style="color:red">You must set the GoogleStaticMapsApiKey setting in web.config</strong>
 		</li>
 	</ul>
 </fieldset>

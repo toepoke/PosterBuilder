@@ -29,7 +29,6 @@ namespace web
 			poster.SignUpLink = string.Format("http://toepoke.co.uk/{0}.aspx", this.EventID.Text);
 			poster.ShowGuides = false;
 			poster.ShowDimensions = false;
-			poster.ApiKey = PosterRendering.ApiKey.Text;
 			poster.PercentSize = 100;		// fullSize when downloading
 			poster.VenueMap.Type( this.MapType.SelectedValue );
 			if (!string.IsNullOrEmpty(this.LatLong.Text))

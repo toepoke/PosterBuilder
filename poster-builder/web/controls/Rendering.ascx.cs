@@ -22,10 +22,6 @@ namespace web.controls
 			get { return this.chkShowGuides; }
 		}
 
-		public TextBox ApiKey {
-			get { return this.txtApiKey; }
-		}
-
 		public string ToQueryString() {
 			return string.Format("show-guides={0}&type={1}&size={2}", 
 				this.ShowGuides.Checked.ToString(), 
@@ -38,7 +34,6 @@ namespace web.controls
 		{
 			if (!IsPostBack) {
 				LoadImageTypes();
-				this.ApiKey.Text = ConfigurationManager.AppSettings["GoogleStaticMapsApiKey"] as string;
 			}
 		}
 

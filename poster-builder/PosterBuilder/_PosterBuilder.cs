@@ -44,8 +44,7 @@ namespace PosterBuilder {
 		/// <summary>
 		/// Ensures resources used by the object are cleared up.
 		/// </summary>
-		public void Dispose()
-		{
+		public void Dispose() {
 			if (this.GDI != null) 
 				this.GDI.Dispose();
 			if (this.Canvas != null) 
@@ -85,12 +84,6 @@ namespace PosterBuilder {
 		/// If false, dimensions are not drawn
 		/// </summary>
 		public bool ShowDimensions { get; set; }
-
-
-		/// <summary>
-		/// Google Static Maps API key
-		/// </summary>
-		public string ApiKey { get; set; }
 
 
 		/// <summary>For validating our inputs before we try and render a new image.</summary>
