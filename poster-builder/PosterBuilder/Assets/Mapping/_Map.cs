@@ -21,7 +21,7 @@ namespace PosterBuilder.Assets.Mapping
 		/// URL to use when querying Google Maps for a map.
 		/// (note you no longer need a key for the API, hence no entry point).
 		/// </summary>
-		public static string GOOGLE_STATIC_MAPS_URL = "http://maps.googleapis.com/maps/api/staticmap";
+		public const string DEFAULT_GOOGLE_STATIC_MAPS_URL = "http://maps.googleapis.com/maps/api/staticmap";
 
 
 		/// <summary>
@@ -42,6 +42,7 @@ namespace PosterBuilder.Assets.Mapping
 		/// </summary>
 		/// <param name="gdi">Graphics object used to draw the template, shared between all drawing objects</param>
 		public Map(Graphics gdi, string apiKey) : base(gdi, "") {
+			this._MapsUrl = DEFAULT_GOOGLE_STATIC_MAPS_URL;
 			this._ApiKey = apiKey;
 			this._Markers = new List<MapMarker>();
 			this._Location = new Location();
@@ -57,6 +58,7 @@ namespace PosterBuilder.Assets.Mapping
 		/// to which box being drawn.
 		/// </param>
 		public Map(Graphics gdi, string apiKey, string id) : base(gdi, id) {
+			this._MapsUrl = DEFAULT_GOOGLE_STATIC_MAPS_URL;
 			this._ApiKey = apiKey;
 			this._Markers = new List<MapMarker>();
 			this._Location = new Location();
@@ -69,13 +71,13 @@ namespace PosterBuilder.Assets.Mapping
 		/// <param name="copy">Object to make a copy from</param>
 		public Map(Map copy) : base((Image)copy) {
 			_ApiKey = copy._ApiKey;
+			_MapsUrl = copy._MapsUrl;
 			_Location = copy._Location;
 			_MapType = copy._MapType;
 			_ZoomLevel = copy._ZoomLevel;
 			_Width = copy._Width;
 			_Height = copy._Height;
 			_Markers = new List<MapMarker>(copy._Markers);
-			_ApiKey = copy._ApiKey;
 		}
 		
 
@@ -84,7 +86,6 @@ namespace PosterBuilder.Assets.Mapping
 		/// </summary>
 		protected Location _Location = null;
 		
-		
 		/// <summary>
 		/// Type of map that should be rendered (road or hybrid, etc).
 		/// </summary>
@@ -92,7 +93,6 @@ namespace PosterBuilder.Assets.Mapping
 		/// See http://code.google.com/apis/maps/documentation/staticmaps/#MapTypes for details
 		/// </remarks>
 		protected internal MapType _MapType = MapType.Road;
-
 
 		/// <summary>
 		/// Zoom level to use when drawing the map
@@ -117,7 +117,6 @@ namespace PosterBuilder.Assets.Mapping
 		/// See http://code.google.com/apis/maps/documentation/staticmaps/#Imagesizes for details
 		/// </remarks>
 		protected internal int _Height = 640;
-		
 
 		/// <summary>
 		/// Specifies a set of markers that can be added to the map
@@ -128,6 +127,11 @@ namespace PosterBuilder.Assets.Mapping
 		/// Specifies the Google [static] Maps API key
 		/// </summary>
 		protected internal string _ApiKey = null;
+
+		/// <summary>
+		/// Specifies the Google [static] Maps Url
+		/// </summary>
+		protected internal string _MapsUrl = null;
 
 
 		/// <summary>
@@ -318,8 +322,7 @@ namespace PosterBuilder.Assets.Mapping
 		/// <returns>
 		/// Returns an GDI Image object with the map drawn on it.
 		/// </returns>
-		protected internal override System.Drawing.Image GetImage()
-		{
+		protected internal override System.Drawing.Image GetImage() {
 			string url = GetMapLink();
 			WebClient wc = new WebClient();
 			byte[] imgBytes = wc.DownloadData(url);
@@ -353,7 +356,9 @@ namespace PosterBuilder.Assets.Mapping
 		protected string GetMapLink() {
 			if (string.IsNullOrEmpty(this._ApiKey))
 				throw new ArgumentException("ApiKey MUST be set - Google Static Maps API now requires a key.");
-			StringBuilder mapLink = new StringBuilder(GOOGLE_STATIC_MAPS_URL);
+			if (string.IsNullOrEmpty(this._MapsUrl))
+				throw new ArgumentException("MapsUrl MUST be set.");
+			StringBuilder mapLink = new StringBuilder(_MapsUrl);
 
 			if (this._Location.UseLatLong())
 				mapLink.AppendFormat("?center={0},{1}", this._Location.Latitude, this._Location.Longitude);
