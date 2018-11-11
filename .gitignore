@@ -8,3 +8,8 @@
 /poster-builder/PosterBuilder/bin/Debug
 /poster-builder/PosterBuilder/obj
 /poster-builder/PosterDesigns/obj
+/poster-builder/.vs
+/poster-builder/PosterBuilder/bin/Release
+/poster-builder/PosterDesigns/bin/Release
+/poster-builder/web/bin
+/poster-builder/PosterDesigns/bin/Debug
