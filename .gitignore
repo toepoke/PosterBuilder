@@ -5,3 +5,6 @@
 /.vs/PosterBuilder/v15/.suo
 /.vs/slnx.sqlite
 /poster-builder/web/obj
+/poster-builder/PosterBuilder/bin/Debug
+/poster-builder/PosterBuilder/obj
+/poster-builder/PosterDesigns/obj

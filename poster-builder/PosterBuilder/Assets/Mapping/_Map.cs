@@ -41,7 +41,8 @@ namespace PosterBuilder.Assets.Mapping
 		/// Constructor
 		/// </summary>
 		/// <param name="gdi">Graphics object used to draw the template, shared between all drawing objects</param>
-		public Map(Graphics gdi) : base(gdi, "") {
+		public Map(Graphics gdi, string apiKey) : base(gdi, "") {
+			this._ApiKey = apiKey;
 			this._Markers = new List<MapMarker>();
 			this._Location = new Location();
 		}
@@ -55,7 +56,8 @@ namespace PosterBuilder.Assets.Mapping
 		/// but useful when debugging as the id is output when the guides are active so you can see which id corresponds
 		/// to which box being drawn.
 		/// </param>
-		public Map(Graphics gdi, string id) : base(gdi, id) {
+		public Map(Graphics gdi, string apiKey, string id) : base(gdi, id) {
+			this._ApiKey = apiKey;
 			this._Markers = new List<MapMarker>();
 			this._Location = new Location();
 		}
@@ -349,6 +351,8 @@ namespace PosterBuilder.Assets.Mapping
 		/// URL to use when calling the map servers.
 		/// </returns>
 		protected string GetMapLink() {
+			if (string.IsNullOrEmpty(this._ApiKey))
+				throw new ArgumentException("ApiKey MUST be set - Google Static Maps API now requires a key.");
 			StringBuilder mapLink = new StringBuilder(GOOGLE_STATIC_MAPS_URL);
 
 			if (this._Location.UseLatLong())
@@ -359,8 +363,7 @@ namespace PosterBuilder.Assets.Mapping
 			mapLink.AppendFormat("&size={0}x{0}", this._Width, this._Height);
 			mapLink.AppendFormat("&maptype={0}",  HttpUtility.UrlEncode(this.GetMapType()) );
 			mapLink.Append("&sensor=false");
-			if (!string.IsNullOrEmpty(this._ApiKey))
-				mapLink.AppendFormat("&key={0}", this._ApiKey);
+			mapLink.AppendFormat("&key={0}", this._ApiKey);
 
 			// Add a marker to the centre of the map
 			this._Markers.Add(new MapMarker(this._Location));
